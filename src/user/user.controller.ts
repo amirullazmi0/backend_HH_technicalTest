@@ -10,10 +10,8 @@ export class UserController {
     ) { }
 
     @Get()
-    async getOne(
-        @Query('id') id: string
-    ): Promise<WebResponse<userResponse>> {
-        return await this.userService.findOne(id)
+    async getOne(): Promise<WebResponse<userResponse>> {
+        return await this.userService.findOne()
     }
 
     @Post()

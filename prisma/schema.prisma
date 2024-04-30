@@ -35,13 +35,12 @@ model proyek {
 model kegiatan {
   id             String   @id @unique @db.VarChar(250)
   proyek         proyek   @relation(fields: [proyekName], references: [name])
-  proyekId       String
   judulKegiatan  String   @db.VarChar(1000)
   tanggalMulai   String   @db.VarChar(250)
   tanggalSelesai String   @db.VarChar(250)
   waktuMulai     String   @db.VarChar(250)
   waktuSelesai   String   @db.VarChar(250)
-  durasi         String   @db.VarChar(250)
+  durasi         Int      @db.Int
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   proyekName     String   @db.VarChar(250)

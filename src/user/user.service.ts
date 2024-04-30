@@ -11,11 +11,9 @@ export class UserService {
         private prismaService: PrismaService
     ) { }
 
-    async findOne(id: string): Promise<WebResponse<userResponse | any>> {
+    async findOne(): Promise<WebResponse<userResponse | any>> {
 
-        let user = await this.prismaService.user.findUnique({
-            where: { id: id }
-        })
+        let user = await this.prismaService.user.findMany()
 
         if (!user) {
             return {
@@ -27,7 +25,7 @@ export class UserService {
         return {
             success: true,
             message: 'get data successfully',
-            data: user
+            data: user[0]
         }
     }
 
